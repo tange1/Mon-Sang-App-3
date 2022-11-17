@@ -14,6 +14,26 @@ const routes: RouteRecordRaw[] = [
         component: () => import('pages/MeinProfil.vue'),
       },
       {
+        path: '/meinprofil',
+        component: () => import('pages/profil/ProfilPersonalien.vue'),
+      },
+      {
+        path: '/meinprofil',
+        component: () => import('pages/profil/ProfilBlutgruppe.vue'),
+      },
+      {
+        path: '/meinprofil',
+        component: () => import('pages/profil/ProfilHistorie.vue'),
+      },
+      {
+        path: '/meinprofil',
+        component: () => import('pages/profil/ProfilEinstellungen.vue'),
+      },
+      {
+        path: '/meinprofil',
+        component: () => import('pages/profil/ProfilDatenschutz.vue'),
+      },
+      {
         path: '/meinprofil_2',
         component: () => import('pages/MeinProfil_2.vue'),
       },
@@ -30,12 +50,12 @@ const routes: RouteRecordRaw[] = [
         component: () => import('pages/Home.vue'),
       },
       {
-        path: '/login',
-        component: () => import('src/pages/LoginPage.vue'),
-      },
-      {
         path: '/fragebogen',
         component: () => import('src/pages/FrageBogen.vue'),
+      },
+      {
+        path: '/fragebogen_gruppiert',
+        component: () => import('src/pages/FrageBogen_gruppiert.vue'),
       },
       {
         path: '/check',
