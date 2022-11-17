@@ -25,7 +25,10 @@
               align="justify"
               narrow-indicator
             >
+              <!-- Tab: Anmelden -->
               <q-tab name="einloggen" label="Anmelden" />
+
+              <!-- Tab: Registrieren -->
               <q-tab name="registrieren" label="Registrieren" />
             </q-tabs>
 
@@ -54,7 +57,7 @@ export default {
     };
   },
   components: {
-    'login-registrieren': require('components/LoginRegister.vue').default,
+    'login-registrieren': require('components/Auth/LoginRegister.vue').default,
   },
 };
 </script>

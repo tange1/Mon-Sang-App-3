@@ -1,12 +1,35 @@
 <template>
-  <q-header elevated> </q-header>
+  <!--q-header elevated> </q-header-->
   <q-page padding>
-    <div class="q-pa-md">
-      <q-btn color="black" class="full-width" label="Full-width" />
-      <q-btn color="primary" label="With Tooltip" class="q-mt-md">
-        <q-tooltip class="bg-accent">I'm a tooltip</q-tooltip>
-      </q-btn>
+    <div class="row">
+      <div class="col-6">
+        <q-card class="link-card" @click="$router.push('/testpage')">
+          <q-card-section class="card-title"
+            >Wichtig vor der Blutspende</q-card-section
+          >
+          <q-icon name="fas fa-users" class="big-icon" />
+
+          <q-card-section>
+            <p>Informationen zur Blutspende</p>
+          </q-card-section>
+        </q-card>
+      </div>
+
+      <div class="col-6">
+        <q-card class="link-card" @click="$router.push('/testpage')">
+          <q-card-section class="card-title"
+            >Wichtig während der Blutspende</q-card-section
+          >
+
+          <q-icon name="fas fa-hospital-user" class="big-icon" />
+
+          <q-card-section>
+            <p>Informationen zur Blutspende</p>
+          </q-card-section>
+        </q-card>
+      </div>
     </div>
+
     <div class="q-pa-md">
       <q-btn
         color="primary"

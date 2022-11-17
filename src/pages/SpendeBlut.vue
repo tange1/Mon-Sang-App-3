@@ -1,0 +1,82 @@
+<template>
+  <q-page padding class="start">
+    <h5>Du möchtest bald Blut spenden?</h5>
+    <div>
+      <div class="col-6">
+        <q-card class="link-card" @click="$router.push('/check')">
+          <q-card-section class="card-title"
+            >Vorab-Check durchführen</q-card-section
+          >
+          <q-card-section>
+            <p>
+              Der Vorab-Check prüft ob Du die wichtigsten Kriterien für die
+              Blutspende erfüllst.
+            </p>
+          </q-card-section>
+        </q-card>
+      </div>
+
+      <br />
+      <div class="relativ-center">
+        <div class="center">
+          <q-icon color="primary" size="xl" name="arrow_downward" />
+        </div>
+      </div>
+      <br />
+
+      <div class="col-6">
+        <q-card class="link-card" @click="$router.push('/check')">
+          <q-card-section class="card-title"
+            ><p class="bold">Termin vereinbaren</p></q-card-section
+          >
+
+          <q-card-section>
+            <p>
+              Nach dem Du den Vorab-Check durchgeführst hast, kannst Du einen
+              Termin in mit einem regionalen Blutspendezentrum vereinbaren.
+            </p>
+          </q-card-section>
+        </q-card>
+      </div>
+
+      <br />
+      <div class="center">
+        <div class="center">
+          <q-icon color="primary" size="xl" name="arrow_downward" />
+        </div>
+      </div>
+      <br />
+
+      <div class="col-6">
+        <q-card class="link-card" @click="$router.push('/testpage')">
+          <q-card-section class="card-title"
+            >Fragebogen ausfüllen</q-card-section
+          >
+
+          <q-card-section>
+            <p>
+              Starte jetzt mit dem Fragebogen. Nach dem Ausfüllen wird ein
+              QR-Code generiert, den Du dann im Blutspendezentrum vorweisen
+              kannst. Bitte denke daran, dass dieser QR-Code nur 48 gültig sein
+              wird.
+            </p>
+          </q-card-section>
+        </q-card>
+      </div>
+    </div>
+  </q-page>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'PageIndex',
+});
+</script>
+
+<style>
+.start {
+  margin-top: 0pt;
+}
+</style>

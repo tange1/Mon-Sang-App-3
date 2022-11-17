@@ -22,8 +22,8 @@ const routes: RouteRecordRaw[] = [
         component: () => import('pages/Informationen.vue'),
       },
       {
-        path: '/einstellungen',
-        component: () => import('pages/Einstellungen.vue'),
+        path: '/spendeblut',
+        component: () => import('src/pages/SpendeBlut.vue'),
       },
       {
         path: '/home',
@@ -31,11 +31,19 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: '/login',
-        component: () => import('src/pages/LoginUser.vue'),
+        component: () => import('src/pages/LoginPage.vue'),
       },
       {
         path: '/fragebogen',
         component: () => import('src/pages/FrageBogen.vue'),
+      },
+      {
+        path: '/check',
+        component: () => import('src/pages/VorabCheck.vue'),
+      },
+      {
+        path: '/termin',
+        component: () => import('src/pages/TerminVereinbarung.vue'),
       },
       {
         path: '/testpage',
