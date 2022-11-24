@@ -1,3 +1,3 @@
 <template>
-  <p>testpage</p>
+  <p>Termin vereinbaren</p>
 </template>

@@ -1,64 +1,5 @@
 <template>
   <q-page padding>
-    <div class="q-pa-md">
-      <q-carousel
-        v-model="slide"
-        transition-prev="slide-right"
-        transition-next="slide-left"
-        animated
-        control-color="primary"
-        class="rounded-borders"
-      >
-        <!-- 1. Carousel -->
-        <q-carousel-slide name="style" class="column no-wrap flex-center">
-          <div v-if="qData !== undefined">
-            <QuestionComponent
-              v-for="question in qData.getQuestions()"
-              :key="question.id"
-              :question="question"
-              :language="lang"
-              :onAnswer="qData.updateQuestionAnswers"
-              :isSelected="qData.isAnswerOptionSelected"
-            />
-          </div>
-          <div class="q-mt-md text-center">
-            {{ qData.fhirQuestionnaire.id }}
-          </div>
-        </q-carousel-slide>
-
-        <!-- 2. Carousel -->
-        <q-carousel-slide name="tv" class="column no-wrap flex-center">
-          <div class="q-mt-md text-center">
-            {{ lorem }}
-          </div>
-        </q-carousel-slide>
-
-        <!-- 3. Carousel -->
-        <q-carousel-slide name="layers" class="column no-wrap flex-center">
-          <div class="q-mt-md text-center"></div>
-        </q-carousel-slide>
-
-        <!-- 4. Carousel -->
-        <q-carousel-slide name="map" class="column no-wrap flex-center">
-          <q-icon name="terrain" color="primary" size="56px" />
-          <div class="q-mt-md text-center"></div>
-        </q-carousel-slide>
-      </q-carousel>
-
-      <div class="row justify-center">
-        <q-btn-toggle
-          glossy
-          v-model="slide"
-          :options="[
-            { label: 1, value: 'style' },
-            { label: 2, value: 'tv' },
-            { label: 3, value: 'layers' },
-            { label: 4, value: 'map' },
-          ]"
-        />
-      </div>
-    </div>
-
     <div v-if="qData !== undefined">
       <QuestionComponent
         v-for="question in qData.getQuestions()"
@@ -91,17 +32,10 @@ import QuestionComponent from '../components/Question.vue';
 import NEUSPENDER_GRUPPIERT from '../assets/questionnaires/neuspender-gruppiert.json';
 import { Questionnaire, QuestionnaireResponse } from '@i4mi/fhir_r4';
 import { QuestionnaireData } from '@i4mi/fhir_questionnaire';
-import { ref } from 'vue';
 
 export default defineComponent({
   name: 'App',
   components: { QuestionComponent },
-  setup() {
-    return {
-      slide: ref('style'),
-      lorem: 'text text text ...',
-    };
-  },
   data() {
     return {
       lang: 'de',

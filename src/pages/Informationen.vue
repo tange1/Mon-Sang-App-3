@@ -1,13 +1,24 @@
 <template>
   <!--q-header elevated> </q-header-->
-  <q-page padding>
+  <q-page>
+    <h5>Wichtig beim Blutspenden</h5>
     <div class="row">
-      <div class="col-6">
+      <div class="col-4">
+        <q-card class="link-card" @click="$router.push('/testpage')">
+          <q-card-section class="card-title">Vor der Blutspende</q-card-section>
+          <q-icon name="fas fa-users" class="big-icon" />
+          <q-card-section>
+            <p>Informationen zur Blutspende</p>
+          </q-card-section>
+        </q-card>
+      </div>
+
+      <div class="col-4">
         <q-card class="link-card" @click="$router.push('/testpage')">
           <q-card-section class="card-title"
-            >Wichtig vor der Blutspende</q-card-section
+            >Während der Blutspende</q-card-section
           >
-          <q-icon name="fas fa-users" class="big-icon" />
+          <q-icon name="fas fa-hospital-user" class="big-icon" />
 
           <q-card-section>
             <p>Informationen zur Blutspende</p>
@@ -15,12 +26,11 @@
         </q-card>
       </div>
 
-      <div class="col-6">
+      <div class="col-4">
         <q-card class="link-card" @click="$router.push('/testpage')">
           <q-card-section class="card-title"
-            >Wichtig während der Blutspende</q-card-section
+            >Nach der Blutspende</q-card-section
           >
-
           <q-icon name="fas fa-hospital-user" class="big-icon" />
 
           <q-card-section>
@@ -71,3 +81,5 @@ export default defineComponent({
   name: 'PageIndex',
 });
 </script>
+
+<style></style>

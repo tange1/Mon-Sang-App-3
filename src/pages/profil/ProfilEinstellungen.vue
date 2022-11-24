@@ -22,7 +22,7 @@
   <q-page padding>
     <div class="q-pa-md">
       <div class="q-gutter-y-md column" style="max-width: 300px">
-        <!--q-toggle v-model="dense" label="Dense QInput" /-->
+        <q-toggle v-model="dense" label="Dense QInput" />
 
         <h5>Personalien</h5>
         <q-input
@@ -71,7 +71,6 @@
         label="Personalien"
         @click="$router.push('/testpage')"
       />
-      <br />
       <q-btn
         class="full-width"
         color="secondary"

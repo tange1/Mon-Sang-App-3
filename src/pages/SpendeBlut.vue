@@ -25,7 +25,7 @@
       <br />
 
       <div class="col-6">
-        <q-card class="link-card" @click="$router.push('/check')">
+        <q-card class="link-card" @click="$router.push('/termin')">
           <q-card-section class="card-title"
             ><p class="bold">Termin vereinbaren</p></q-card-section
           >
@@ -48,11 +48,26 @@
       <br />
 
       <div class="col-6">
-        <q-card class="link-card" @click="$router.push('/testpage')">
+        <q-card class="link-card" @click="$router.push('/fragebogen')">
           <q-card-section class="card-title"
             >Fragebogen ausfüllen</q-card-section
           >
-
+          <q-card-section>
+            <p>
+              Starte jetzt mit dem Fragebogen. Nach dem Ausfüllen wird ein
+              QR-Code generiert, den Du dann im Blutspendezentrum vorweisen
+              kannst. Bitte denke daran, dass dieser QR-Code nur 48 gültig sein
+              wird.
+            </p>
+          </q-card-section>
+        </q-card>
+      </div>
+      <br />
+      <div class="col-6">
+        <q-card class="link-card" @click="$router.push('/testpage')">
+          <q-card-section class="card-title"
+            >Fragebogen gruppiert ausfüllen</q-card-section
+          >
           <q-card-section>
             <p>
               Starte jetzt mit dem Fragebogen. Nach dem Ausfüllen wird ein

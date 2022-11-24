@@ -502,12 +502,12 @@
     {
       "linkId": "G00",
       "type": "group",
-      "text": "Fragebogen",
+      "text": "Gruppe 0",
       "item": [
         {
           "linkId": "G01",
           "type": "group",
-          "text": "Fragebogen",
+          "text": "Gruppe 01",
           "item": [
             {
               "linkId": "Q1",
@@ -617,7 +617,7 @@
         {
           "linkId": "G02",
           "type": "group",
-          "text": "Fragebogen",
+          "text": "Gruppe 02",
           "item": [
             {
               "linkId": "Q2",
@@ -649,7 +649,7 @@
         {
           "linkId": "G03",
           "type": "group",
-          "text": "Fragebogen",
+          "text": "Gruppe 03",
           "item": [
             {
               "linkId": "Q3",
@@ -681,7 +681,7 @@
         {
           "linkId": "G04",
           "type": "group",
-          "text": "Fragebogen",
+          "text": "Gruppe 04",
           "item": [
             {
               "linkId": "Q4",
@@ -713,7 +713,7 @@
         {
           "linkId": "G05",
           "type": "group",
-          "text": "Fragebogen",
+          "text": "Gruppe 05",
           "item": [
             {
               "linkId": "Q5",
@@ -745,7 +745,7 @@
         {
           "linkId": "G06",
           "type": "group",
-          "text": "Fragebogen",
+          "text": "Gruppe 06",
           "item": [
             {
               "linkId": "Q6",
@@ -774,7 +774,7 @@
               "item": [
                 {
                   "linkId": "Q6.1",
-                  "type": "text",
+                  "type": "string",
                   "repeats": false,
                   "required": false,
                   "text": "Welche?",
@@ -913,7 +913,7 @@
         {
           "linkId": "G07",
           "type": "group",
-          "text": "Fragebogen",
+          "text": "Gruppe 07",
           "item": [
             {
               "linkId": "Q11",
@@ -992,7 +992,7 @@
               "item": [
                 {
                   "linkId": "Q13.1",
-                  "type": "text",
+                  "type": "string",
                   "repeats": false,
                   "required": false,
                   "text": "Welche?",
@@ -1046,7 +1046,17 @@
                         ]
                       }
                     ]
-                  }
+                  },
+                  "enableWhen": [
+                    {
+                      "question": "Q13",
+                      "operator": "=",
+                      "answerCoding": {
+                        "system": "http://snomed.info/sct",
+                        "code": "373066001"
+                      }
+                    }
+                  ]
                 }
               ]
             }
@@ -1055,7 +1065,7 @@
         {
           "linkId": "G08",
           "type": "group",
-          "text": "Fragebogen",
+          "text": "Gruppe 08",
           "item": [
             {
               "linkId": "Q14",
@@ -1137,7 +1147,7 @@
         {
           "linkId": "G09",
           "type": "group",
-          "text": "Fragebogen",
+          "text": "Gruppe 09",
           "item": [
             {
               "linkId": "Q17",
@@ -1169,7 +1179,7 @@
         {
           "linkId": "G10",
           "type": "group",
-          "text": "Fragebogen",
+          "text": "Gruppe 10",
           "item": [
             {
               "linkId": "Q18",
@@ -1326,7 +1336,7 @@
         {
           "linkId": "G11",
           "type": "group",
-          "text": "Fragebogen",
+          "text": "Gruppe 11",
           "item": [
             {
               "linkId": "Q24",
@@ -1355,7 +1365,7 @@
               "item": [
                 {
                   "linkId": "Q24.1",
-                  "type": "text",
+                  "type": "string",
                   "repeats": false,
                   "required": false,
                   "text": "Falls ja, wo?",
@@ -1389,7 +1399,7 @@
                 },
                 {
                   "linkId": "Q24.2",
-                  "type": "text",
+                  "type": "string",
                   "repeats": false,
                   "required": false,
                   "text": "Wie lange?",
@@ -1532,7 +1542,7 @@
         {
           "linkId": "G12",
           "type": "group",
-          "text": "Fragebogen",
+          "text": "Gruppe 12",
           "item": [
             {
               "linkId": "Q25",
@@ -1561,7 +1571,7 @@
               "item": [
                 {
                   "linkId": "Q25.1",
-                  "type": "text",
+                  "type": "string",
                   "repeats": false,
                   "required": false,
                   "text": "Wenn ja, in welchem Land?",
@@ -1656,7 +1666,7 @@
               "item": [
                 {
                   "linkId": "Q26.1",
-                  "type": "text",
+                  "type": "string",
                   "repeats": false,
                   "required": false,
                   "text": "Wenn ja, in welchem Land?",
@@ -1695,7 +1705,7 @@
         {
           "linkId": "G13",
           "type": "group",
-          "text": "Fragebogen",
+          "text": "Gruppe 13",
           "item": [
             {
               "linkId": "Q27",
@@ -1810,7 +1820,7 @@
               "item": [
                 {
                   "linkId": "Q29.1",
-                  "type": "text",
+                  "type": "string",
                   "repeats": false,
                   "required": false,
                   "text": "Wenn ja: Welche?",
@@ -1905,7 +1915,7 @@
               "item": [
                 {
                   "linkId": "Q30.1",
-                  "type": "text",
+                  "type": "string",
                   "repeats": false,
                   "required": false,
                   "text": "Falls ja, welche?",
@@ -1944,7 +1954,7 @@
         {
           "linkId": "G14",
           "type": "group",
-          "text": "Fragebogen",
+          "text": "Gruppe 14",
           "item": [
             {
               "linkId": "Q31",
@@ -2007,7 +2017,7 @@
                 },
                 {
                   "linkId": "Q31.2",
-                  "type": "text",
+                  "type": "string",
                   "repeats": false,
                   "required": false,
                   "text": "Wo?",
@@ -2046,7 +2056,7 @@
         {
           "linkId": "G15",
           "type": "group",
-          "text": "Fragebogen",
+          "text": "Gruppe 15",
           "item": [
             {
               "linkId": "Q32",
@@ -2103,7 +2113,7 @@
         {
           "linkId": "G16",
           "type": "group",
-          "text": "Fragebogen",
+          "text": "Gruppe 16",
           "item": [
             {
               "linkId": "Q34",
@@ -2176,7 +2186,7 @@
         {
           "linkId": "G17",
           "type": "group",
-          "text": "Fragebogen",
+          "text": "Gruppe 17",
           "item": [
             {
               "linkId": "Q36",
@@ -2244,7 +2254,7 @@
         {
           "linkId": "G18",
           "type": "group",
-          "text": "Fragebogen",
+          "text": "Gruppe 18",
           "item": [
             {
               "linkId": "Q37",
@@ -2276,7 +2286,7 @@
         {
           "linkId": "G19",
           "type": "group",
-          "text": "Fragebogen",
+          "text": "Gruppe 19",
           "item": [
             {
               "linkId": "Q38",

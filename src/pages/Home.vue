@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-    <h5>Willkommen in der MonSang App</h5>
+    <h5>Willkommen in der MonSang App {{}}</h5>
     <div class="q-pa-md">
       <q-carousel
         animated
@@ -41,8 +41,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+
 export default defineComponent({
   name: 'PageIndex',
+  components: {},
+
   data(): {
     autoplay: boolean;
     slide: string;

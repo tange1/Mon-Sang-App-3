@@ -1,13 +1,18 @@
 <template>
   <q-card class="login-card">
+    <img
+      class="horizontal-middle"
+      alt="Mon Sang App logo"
+      src="../assets/logo/logo.png"
+    />
     <!-- Login -->
     <q-card-section class="card-title">Login</q-card-section>
     <template v-if="code === ''">
       <q-card-section class="login-text">
         <!-- Willkommen zum Gesundheitsfachpersonen-Bereich des EPD... -->
-        <p>Willkommen zum Gesundheitsfachpersonen-Bereich des EPD</p>
+        <p>Willkommen in der Mon Sang App</p>
         <!-- Loggen Sie sich mit Ihrer EPD-UC eID ein, um auf die Dossiers... -->
-        <p>Loggen Sie sich mit Ihrer EPD-UC eID ein, um auf die Dossiers</p>
+        <p>Melde dich mit deiner E-Mailadresse und Passwort an.</p>
         <!-- E-Mail und Passwort -->
         <form id="login-form">
           <!-- E-Mail eingeben -->
@@ -15,10 +20,11 @@
           <!-- Passwort eingeben -->
           <q-input v-model="password" label="Password" type="password" />
           <q-btn
+            class="bottom-center"
             id="login-button"
             @click="login"
             type="submit"
-            label="$t('login.login_label')"
+            label="Anmelden"
             :disable="password === '' || eId === ''"
           />
         </form>
