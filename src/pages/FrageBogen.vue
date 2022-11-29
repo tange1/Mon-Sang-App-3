@@ -25,13 +25,21 @@
 import { defineComponent } from 'vue';
 import QuestionComponent from '../components/Question.vue';
 import NEUSPENDER from '../assets/questionnaires/neuspender.json';
-import { Questionnaire, QuestionnaireResponse, Bundle, BundleType, Patient } from '@i4mi/fhir_r4';
+import { Questionnaire, Bundle, BundleType, Patient } from '@i4mi/fhir_r4';
 import { QuestionnaireData } from '@i4mi/fhir_questionnaire';
 import { iti65DocumentBundle, useITI65 } from '@i4mi/mhealth-proto-components/src/utils/epdPlaygroundUtils';
 import {
-  CLASS_CODES, CLASS_TYPE_COMBINATIONS, createIti65Bundle, FACILITY_CLASS_CODES, iti65Metadata, PRACTICE_SETTING_CODES,
-  SUPPORTED_LANGUAGE_DISPLAYS, SystemCodeExtension, TYPE_CODES
+  CLASS_CODES,
+  CLASS_TYPE_COMBINATIONS,
+  createIti65Bundle,
+  FACILITY_CLASS_CODES,
+  iti65Metadata,
+  PRACTICE_SETTING_CODES,
+  SUPPORTED_LANGUAGE_DISPLAYS,
+  SystemCodeExtension,
+  TYPE_CODES
 } from '@i4mi/mhealth-proto-components/src/utils/fhirUtils';
+
 
 export default defineComponent({
   name: 'App',
@@ -41,7 +49,7 @@ export default defineComponent({
       lang: 'de',
       qData: new QuestionnaireData(NEUSPENDER as Questionnaire, ['de']),
       response: undefined as string | undefined,
-      //categorySelect: undefined as SystemCodeExtension | undefined,
+      categorySelect: undefined as SystemCodeExtension | undefined,
     };
   },
 
@@ -49,7 +57,8 @@ export default defineComponent({
     // beim Button: Antwort speichern
     setAnswers(): void {
       if (!this.qData) return;
-      try {
+
+      /**try {
         this.response = JSON.stringify( // stringify converts a JS value to a JSON string
           this.qData.getQuestionnaireResponse(this.lang, {
             reset: false,
@@ -60,26 +69,41 @@ export default defineComponent({
         );
       } catch (error) {
         console.log('Es ging etwas schief beim Questionnaire speichern', error);
+      };*/
+      const category = {
+        system: 'http://snomed.info/sct',
+        code: '184216000',
+        display: 'Patient record type'
+      };
+
+      const type = {
+        system: 'http://snomed.info/sct',
+        code: '419891008',
+        display: 'Record artifact (record artifact)'
       };
 
       const metadata = {
         title: this.qData,
         isFhir: true,
-        description: 'Set of all responses',
+        description: 'Set of all responses, which have to be answered before donating blood',
         contentLanguage: 'de',
         sourceIdentifier: this.$store.getOids().app,
-        categoryCoding: '',
-        typeCoding: '',
+        categoryCoding: category,
+        typeCoding: type,
         facilityCoding: {
           system: 'http://snomed.info/sct',
           code: '394778007',
-          display: "Client's or patient's home (environment)"
+          display: "Client's or patient's home (environment)",
         },
-        //practiceSettingCoding: this.$store.getSettings().practiceSetting,
+        practiceSettingCoding: {
+          system: 'http://snomed.info/sct',
+          code: '394802001',
+          display: 'General medicine',
+        }
         //authorRole: ITI_65_AUTHOR_ROLE.PAT
 
-      } as Iti65Metadata;
-      this.$fhirUtils.createIti65Bundle(this.$store.getUser, new File([JSON.stringify(response)], composition.id + '.json',
+      } as iti65Metadata;
+      this.$fhirUtils.createIti65Bundle(this.$store.getUser, new File([JSON.stringify(this.response)], this.qData + '.json',
         {
           type: 'application/fhir+json'
         }), metadata).then((result) => this.$epdUtils.useITI65(result))
