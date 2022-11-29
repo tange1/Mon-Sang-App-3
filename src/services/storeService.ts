@@ -10,8 +10,9 @@ import { LoginType } from 'src/model/interfaces';
 const STORAGE_KEY = 'EPD_USE_CASES_PT1';
 
 interface LocalStoreObject {
-  localPatients: Patient[];
+  //localPatients: Patient[];
   //settings: Settings;
+  patient: Patient;
   oids: Oids;
 }
 
@@ -29,7 +30,8 @@ export interface Oids {
 
 export default class Store {
   private user: LoginType | undefined;
-  private localPatients = new Array<Patient>();
+  private patient: Patient = { resourceType: 'Patient' };
+  //private localPatients = new Array<Patient>();
   //private settings = this.getDefaultSettings();
   private oids = this.getDefaultOids();
 
@@ -49,7 +51,8 @@ export default class Store {
     }
     if (local) {
       const storage = JSON.parse(local) as LocalStoreObject;
-      this.localPatients = storage.localPatients;
+      //this.localPatients = storage.localPatients;
+      this.patient = storage.patient;
       //this.settings = storage.settings || this.getDefaultSettings();
       this.oids = storage.oids || this.getDefaultOids();
     }
@@ -69,7 +72,8 @@ export default class Store {
     localStorage.setItem(
       STORAGE_KEY,
       JSON.stringify({
-        localPatients: this.localPatients,
+        //localPatients: this.localPatients,
+        patient: this.patient,
         //settings: this.settings,
         oids: this.oids,
       })
@@ -221,18 +225,32 @@ export default class Store {
   /**
    * Sets the localPatients property
    * @param _patients an Array of Patient resources
-   */
+
   setLocalPatients(_patients: Patient[]): void {
     this.localPatients = _patients;
+    this.persistToStorage();
+  }
+  */
+
+  /**
+   * Sets the patient property
+   * @param _patient the Patient resource
+   */
+  setPatient(_patient: Patient): void {
+    this.patient = _patient;
     this.persistToStorage();
   }
 
   /**
    * @returns an array of Patient resources if previously set,
    *          or an empty Array if not set before.
-   */
+
   getLocalPatients(): Patient[] {
     return this.localPatients;
+  }
+  */
+  getPatient(): Patient {
+    return this.patient;
   }
 
   /**
@@ -254,7 +272,8 @@ export default class Store {
   // Removes all data from storage.
   clearAll(): void {
     this.user = undefined;
-    this.localPatients = [];
+    //this.localPatients = [];
+    this.patient = { resourceType: 'Patient' };
     //this.settings = this.getDefaultSettings();
     sessionStorage.clear();
     localStorage.clear();
@@ -267,5 +286,12 @@ export default class Store {
   resetSession(): void {
     this.user = undefined;
     sessionStorage.clear();
+  }
+
+  /**
+   * Logs out the user and deletes his data.
+   */
+  logoutUser(): void {
+    this.clearAll();
   }
 }

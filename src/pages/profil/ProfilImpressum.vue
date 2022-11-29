@@ -9,12 +9,12 @@
 
       <div class="q-pa-md q-gutter-sm">
         <q-avatar size="60px">
-          <img
+          <!--img
             class="logo"
             alt="Mon Sang App logo"
             src="../assets/logo/logo.png"
             style="width: 60px; height: 60px"
-          />
+          /-->
         </q-avatar>
       </div>
     </q-toolbar>

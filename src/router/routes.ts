@@ -6,31 +6,31 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       {
-        path: '',
-        component: () => import('pages/IndexPage.vue'),
+        path: '/home',
+        component: () => import('pages/Home.vue'),
       },
       {
         path: '/meinprofil',
         component: () => import('pages/MeinProfil.vue'),
       },
       {
-        path: '/meinprofil',
+        path: '/personalien',
         component: () => import('pages/profil/ProfilPersonalien.vue'),
       },
       {
-        path: '/meinprofil',
+        path: '/blutgruppe',
         component: () => import('pages/profil/ProfilBlutgruppe.vue'),
       },
       {
-        path: '/meinprofil',
+        path: '/historie',
         component: () => import('pages/profil/ProfilHistorie.vue'),
       },
       {
-        path: '/meinprofil',
+        path: '/einstellungen',
         component: () => import('pages/profil/ProfilEinstellungen.vue'),
       },
       {
-        path: '/meinprofil',
+        path: '/datenschutz',
         component: () => import('pages/profil/ProfilDatenschutz.vue'),
       },
       {
@@ -42,8 +42,8 @@ const routes: RouteRecordRaw[] = [
         component: () => import('pages/Informationen.vue'),
       },
       {
-        path: '/spendeblut',
-        component: () => import('src/pages/SpendeBlut.vue'),
+        path: '/spenden',
+        component: () => import('src/pages/Spenden.vue'),
       },
       {
         path: '/home',
@@ -64,6 +64,14 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/termin',
         component: () => import('src/pages/TerminVereinbarung.vue'),
+      },
+      {
+        path: '/barometer',
+        component: () => import('src/pages/BlutspendeBarometer.vue'),
+      },
+      {
+        path: 'upload',
+        component: () => import('pages/Upload.vue')
       },
       {
         path: '/testpage',

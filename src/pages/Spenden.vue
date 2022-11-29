@@ -1,12 +1,10 @@
 <template>
   <q-page padding class="start">
-    <h5>Du möchtest bald Blut spenden?</h5>
     <div>
+      <!-- 1. Card: Vorab-Check -->
       <div class="col-6">
         <q-card class="link-card" @click="$router.push('/check')">
-          <q-card-section class="card-title"
-            >Vorab-Check durchführen</q-card-section
-          >
+          <q-card-section class="card-title">1. Vorab-Check durchführen</q-card-section>
           <q-card-section>
             <p>
               Der Vorab-Check prüft ob Du die wichtigsten Kriterien für die
@@ -16,20 +14,10 @@
         </q-card>
       </div>
 
-      <br />
-      <div class="relativ-center">
-        <div class="center">
-          <q-icon color="primary" size="xl" name="arrow_downward" />
-        </div>
-      </div>
-      <br />
-
+      <!-- 2. Card: Terminvereinbarung -->
       <div class="col-6">
         <q-card class="link-card" @click="$router.push('/termin')">
-          <q-card-section class="card-title"
-            ><p class="bold">Termin vereinbaren</p></q-card-section
-          >
-
+          <q-card-section class="card-title">2. Termin vereinbaren</q-card-section>
           <q-card-section>
             <p>
               Nach dem Du den Vorab-Check durchgeführst hast, kannst Du einen
@@ -39,19 +27,10 @@
         </q-card>
       </div>
 
-      <br />
-      <div class="center">
-        <div class="center">
-          <q-icon color="primary" size="xl" name="arrow_downward" />
-        </div>
-      </div>
-      <br />
-
+      <!-- 3. Card: Fragebogen -->
       <div class="col-6">
         <q-card class="link-card" @click="$router.push('/fragebogen')">
-          <q-card-section class="card-title"
-            >Fragebogen ausfüllen</q-card-section
-          >
+          <q-card-section class="card-title">3. Fragebogen ausfüllen</q-card-section>
           <q-card-section>
             <p>
               Starte jetzt mit dem Fragebogen. Nach dem Ausfüllen wird ein
@@ -62,12 +41,11 @@
           </q-card-section>
         </q-card>
       </div>
-      <br />
+
+      <!-- 3. Card: Fragebogen (Variante 2)>
       <div class="col-6">
         <q-card class="link-card" @click="$router.push('/testpage')">
-          <q-card-section class="card-title"
-            >Fragebogen gruppiert ausfüllen</q-card-section
-          >
+          <q-card-section class="card-title">Fragebogen gruppiert ausfüllen</q-card-section>
           <q-card-section>
             <p>
               Starte jetzt mit dem Fragebogen. Nach dem Ausfüllen wird ein
@@ -77,7 +55,7 @@
             </p>
           </q-card-section>
         </q-card>
-      </div>
+      </div-->
     </div>
   </q-page>
 </template>

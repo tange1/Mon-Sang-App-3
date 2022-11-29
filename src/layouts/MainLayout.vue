@@ -2,14 +2,7 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
+        <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
 
         <q-toolbar-title> Mon Sang App </q-toolbar-title>
 
@@ -18,13 +11,9 @@
           <q-icon name="fas fa-user-md" id="user-icon" />
         </div>
         <!--div v-if="user.givenName" @click="logout">
-          {{
-            (user.prefix ? user.prefix : '') +
-            ' ' +
-            user.givenName +
-            ' ' +
-            user.familyName
-          }}
+          {{ (user.prefix ? user.prefix : '') +
+            ' ' + user.givenName +
+            ' ' + user.familyName }}
           <q-icon name="fas fa-user-md" id="user-icon" />
         </div-->
       </q-toolbar>
@@ -34,11 +23,7 @@
       <q-list>
         <q-item-label header>Titel</q-item-label>
         <q-item v-for="entry in menuEntries" :key="entry.to">
-          <q-icon
-            v-if="entry.icon"
-            :name="'fas fa-' + entry.icon"
-            class="menu-icon"
-          />
+          <q-icon v-if="entry.icon" :name="'fas fa-' + entry.icon" class="menu-icon" />
           <router-link :to="entry.to" class="menu-link">Links</router-link>
         </q-item>
       </q-list>
@@ -49,11 +34,11 @@
     </q-page-container>
 
     <q-footer>
-      <q-tabs>
-        <q-route-tab to="/home" icon="home" label="" />
-        <q-route-tab to="/spendeblut" icon="gas_meter" label="" />
-        <q-route-tab to="/informationen" icon="info" label="" />
-        <q-route-tab to="/meinprofil" icon="person" label="" />
+      <q-tabs class="bg-primary text-white shadow-2">
+        <q-route-tab to="/home" icon="home" label="Home" />
+        <q-route-tab to="/spenden" icon="gas_meter" label="Spenden" />
+        <q-route-tab to="/informationen" icon="info" label="Info" />
+        <q-route-tab to="/meinprofil_2" icon="person" label="Profil" />
       </q-tabs>
     </q-footer>
   </q-layout>
@@ -80,7 +65,7 @@ export default defineComponent({
         {
           to: '/',
           translateString: 'home',
-          icon: 'home',
+          icon: '',
         },
         {
           to: '/meinprofil',
@@ -104,7 +89,7 @@ export default defineComponent({
     },
     logout() {
       if (confirm('Möchten Sie sich wirklich ausloggen?')) {
-        this.$store.resetSession();
+        this.$store.logoutUser();
         location.reload();
       }
     },
@@ -112,4 +97,6 @@ export default defineComponent({
 });
 </script>
 
-<style></style>
+<style>
+
+</style>

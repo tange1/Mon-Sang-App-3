@@ -1,4 +1,5 @@
 <template>
+  <br />
   <q-page padding>
     <div v-if="qData !== undefined">
       <QuestionComponent

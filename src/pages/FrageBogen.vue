@@ -1,14 +1,9 @@
 <template>
+  <br />
   <q-page padding>
     <div v-if="qData !== undefined">
-      <QuestionComponent
-        v-for="question in qData.getQuestions()"
-        :key="question.id"
-        :question="question"
-        :language="lang"
-        :onAnswer="qData.updateQuestionAnswers"
-        :isSelected="qData.isAnswerOptionSelected"
-      />
+      <QuestionComponent v-for="question in qData.getQuestions()" :key="question.id" :question="question"
+        :language="lang" :onAnswer="qData.updateQuestionAnswers" :isSelected="qData.isAnswerOptionSelected" />
     </div>
 
     <!-- Buttons am Ende des Fragebogens -->
@@ -30,8 +25,13 @@
 import { defineComponent } from 'vue';
 import QuestionComponent from '../components/Question.vue';
 import NEUSPENDER from '../assets/questionnaires/neuspender.json';
-import { Questionnaire, QuestionnaireResponse } from '@i4mi/fhir_r4';
+import { Questionnaire, QuestionnaireResponse, Bundle, BundleType, Patient } from '@i4mi/fhir_r4';
 import { QuestionnaireData } from '@i4mi/fhir_questionnaire';
+import { iti65DocumentBundle, useITI65 } from '@i4mi/mhealth-proto-components/src/utils/epdPlaygroundUtils';
+import {
+  CLASS_CODES, CLASS_TYPE_COMBINATIONS, createIti65Bundle, FACILITY_CLASS_CODES, iti65Metadata, PRACTICE_SETTING_CODES,
+  SUPPORTED_LANGUAGE_DISPLAYS, SystemCodeExtension, TYPE_CODES
+} from '@i4mi/mhealth-proto-components/src/utils/fhirUtils';
 
 export default defineComponent({
   name: 'App',
@@ -41,14 +41,16 @@ export default defineComponent({
       lang: 'de',
       qData: new QuestionnaireData(NEUSPENDER as Questionnaire, ['de']),
       response: undefined as string | undefined,
+      //categorySelect: undefined as SystemCodeExtension | undefined,
     };
   },
 
   methods: {
+    // beim Button: Antwort speichern
     setAnswers(): void {
       if (!this.qData) return;
       try {
-        this.response = JSON.stringify(
+        this.response = JSON.stringify( // stringify converts a JS value to a JSON string
           this.qData.getQuestionnaireResponse(this.lang, {
             reset: false,
             includeID: true,
@@ -58,10 +60,36 @@ export default defineComponent({
         );
       } catch (error) {
         console.log('Es ging etwas schief beim Questionnaire speichern', error);
-      }
+      };
+
+      const metadata = {
+        title: this.qData,
+        isFhir: true,
+        description: 'Set of all responses',
+        contentLanguage: 'de',
+        sourceIdentifier: this.$store.getOids().app,
+        categoryCoding: '',
+        typeCoding: '',
+        facilityCoding: {
+          system: 'http://snomed.info/sct',
+          code: '394778007',
+          display: "Client's or patient's home (environment)"
+        },
+        //practiceSettingCoding: this.$store.getSettings().practiceSetting,
+        //authorRole: ITI_65_AUTHOR_ROLE.PAT
+
+      } as Iti65Metadata;
+      this.$fhirUtils.createIti65Bundle(this.$store.getUser, new File([JSON.stringify(response)], composition.id + '.json',
+        {
+          type: 'application/fhir+json'
+        }), metadata).then((result) => this.$epdUtils.useITI65(result))
+        .then((result) => console.log(JSON.stringify(result)))
+        .catch((error) => console.error(error));
     },
   },
 });
 </script>
 
-<style></style>
+<style>
+
+</style>

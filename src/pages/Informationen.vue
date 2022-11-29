@@ -1,76 +1,63 @@
 <template>
-  <!--q-header elevated> </q-header-->
-  <q-page>
-    <h5>Wichtig beim Blutspenden</h5>
-    <div class="row">
-      <div class="col-4">
-        <q-card class="link-card" @click="$router.push('/testpage')">
-          <q-card-section class="card-title">Vor der Blutspende</q-card-section>
-          <q-icon name="fas fa-users" class="big-icon" />
-          <q-card-section>
-            <p>Informationen zur Blutspende</p>
-          </q-card-section>
-        </q-card>
-      </div>
+  <q-page padding class="start">
+    <div id="q-app">
+      <q-card class="my-card">
+        <q-card-section horizontal>
 
-      <div class="col-4">
-        <q-card class="link-card" @click="$router.push('/testpage')">
-          <q-card-section class="card-title"
-            >Während der Blutspende</q-card-section
-          >
-          <q-icon name="fas fa-hospital-user" class="big-icon" />
+          <q-card-section @click="$router.push('/testpage')">
+            <q-card-section class="card-title">Vor der Blutspende</q-card-section>
+            <q-card-section>
+              <p>So bereite ich mich optimal auf die Blut- spende vor.</p>
+            </q-card-section>
+          </q-card-section>
+
+          <q-separator vertical></q-separator>
 
           <q-card-section>
-            <p>Informationen zur Blutspende</p>
+            <q-card-section class="card-title">Nach der Blutspende</q-card-section>
+            <q-card-section>
+              <p>Auf folgendes muss ich nach der Blutspende achten.</p>
+            </q-card-section>
           </q-card-section>
-        </q-card>
+
+        </q-card-section>
+      </q-card>
+
+      <div class="q-pa-md">
+        <q-carousel arrows animated navigation infinite :autoplay="autoplay" transition-prev="slide-right"
+          transition-next="slide-left" @mouseenter="autoplay = false" @mouseleave="autoplay = true" v-model="slide"
+          v-model:fullscreen="fullscreen" height="210px" bordered class="rounded-borders">
+
+          <!-- 1. Slide -->
+          <q-carousel-slide name="first" img-src="../assets/pictures_blooddonation/Blutspende_1.webp">
+            <div class="absolute-top custom-caption">
+              <div class="text-h6">Erfahre mehr über die einzelnen Blutgruppen</div>
+              <div class="text-subtitle1">text...</div>
+            </div>
+          </q-carousel-slide>
+
+          <!-- 2. Slide -->
+          <q-carousel-slide name="second" img-src="../assets/pictures_blooddonation/Blutspende_2.jpg">
+            <div class="absolute-top custom-caption">
+              <div class="text-h6">Weshalb ist deine Spende so wichtig?</div>
+              <!--div class="text-subtitle1">Wo kann ich Blut spenden?</div-->
+            </div>
+          </q-carousel-slide>
+
+          <!-- 3. Slide -->
+          <q-carousel-slide name="third" @click="$router.push('/barometer')"
+            img-src="../assets/pictures_blooddonation/Blutgruppenbarometer_2.jpeg">
+            <div class="absolute-top custom-caption">
+              <div class="text-h6">Blutgruppen-Barometer</div>
+              <div class="text-subtitle1">Wie sieht der aktuelle Blutgruppenbestand aus?</div>
+            </div>
+          </q-carousel-slide>
+        </q-carousel>
       </div>
 
-      <div class="col-4">
-        <q-card class="link-card" @click="$router.push('/testpage')">
-          <q-card-section class="card-title"
-            >Nach der Blutspende</q-card-section
-          >
-          <q-icon name="fas fa-hospital-user" class="big-icon" />
-
-          <q-card-section>
-            <p>Informationen zur Blutspende</p>
-          </q-card-section>
-        </q-card>
-      </div>
     </div>
 
-    <div class="q-pa-md">
-      <q-btn
-        color="primary"
-        class="full-width"
-        label="Wichtig vor der Blutspende"
-      />
-      <p></p>
-      <q-btn
-        color="primary"
-        class="full-width"
-        label="Wichtig während der Blutspende"
-      />
-      <p></p>
-      <q-btn
-        color="primary"
-        class="full-width"
-        label="Wichtig nach der Blutspende"
-      />
-      <p></p>
-      <q-btn
-        color="primary"
-        class="full-width"
-        label="Weshalb sind wir auf deine Blutspende angewiesen"
-      />
-      <p></p>
-      <q-btn
-        color="primary"
-        class="full-width"
-        label="Erfahre mehr über die einzelnen Blutgruppen"
-      />
-    </div>
+
   </q-page>
 </template>
 
@@ -79,7 +66,19 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'PageIndex',
+  el: '#q-app',
+  data() {
+    return {
+      autoplay: true,
+      slide: 'first',
+      fullscreen: false,
+    }
+  }
 });
 </script>
 
-<style></style>
+<style>
+.start {
+  margin-top: 0pt;
+}
+</style>

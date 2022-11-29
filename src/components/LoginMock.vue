@@ -1,32 +1,21 @@
 <template>
   <q-card class="login-card">
-    <img
-      class="horizontal-middle"
-      alt="Mon Sang App logo"
-      src="../assets/logo/logo.png"
-    />
+    <img class="horizontal-middle" alt="Mon Sang App logo" src="../assets/logo/logo_3.png" />
+
     <!-- Login -->
     <q-card-section class="card-title">Login</q-card-section>
     <template v-if="code === ''">
       <q-card-section class="login-text">
-        <!-- Willkommen zum Gesundheitsfachpersonen-Bereich des EPD... -->
         <p>Willkommen in der Mon Sang App</p>
-        <!-- Loggen Sie sich mit Ihrer EPD-UC eID ein, um auf die Dossiers... -->
         <p>Melde dich mit deiner E-Mailadresse und Passwort an.</p>
         <!-- E-Mail und Passwort -->
         <form id="login-form">
           <!-- E-Mail eingeben -->
           <q-input v-model="eId" label="Email" type="email" />
           <!-- Passwort eingeben -->
-          <q-input v-model="password" label="Password" type="password" />
-          <q-btn
-            class="bottom-center"
-            id="login-button"
-            @click="login"
-            type="submit"
-            label="Anmelden"
-            :disable="password === '' || eId === ''"
-          />
+          <q-input v-model="password" label="Passwort" type="password" />
+          <q-btn class="bottom-center" id="login-button" @click="login" type="submit" label="Anmelden"
+            :disable="password === '' || eId === ''" />
         </form>
 
         <!-- Falls Passwort falsch -->
@@ -34,11 +23,19 @@
       </q-card-section>
     </template>
   </q-card>
+
+  <q-footer>
+    <q-tabs>
+      <q-route-tab to="/home" icon="home" label="" />
+      <q-route-tab to="/spendeblut" icon="gas_meter" label="" />
+      <q-route-tab to="/informationen" icon="info" label="" />
+    </q-tabs>
+  </q-footer>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { LoginType, UIMessage } from '../model/interfaces';
+import { LoginType } from '../model/interfaces';
 
 // Mocks the login to the platform with a token displayed in the UI.
 export default defineComponent({
@@ -60,16 +57,18 @@ export default defineComponent({
       invalidCode: false,
     };
   },
-
+  /**
   emits: {
-    /**
+    **
      * Notify parent component about token message to display.
      * Emitted when mocked message for 2FA is "sent".
-     */
+     *
     message: (payload: UIMessage) => {
       return payload.type === 'sms' && payload.title && payload.text;
     },
   },
+  */
+
   props: {
     // Accepted username, password combinations for login.
     acceptedLogins: {

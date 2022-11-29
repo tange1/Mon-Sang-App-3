@@ -1,4 +1,3 @@
-
 [
   {
     "username": "donald@duck.ch",
@@ -14,5 +13,26 @@
     "givenName": "Marianne",
     "familyName": "Loser",
     "prefix": "Dr. med."
+  },
+  {
+    "username": "laura@wyss.ch",
+    "password": "laura",
+    "phone": "076 111 22 33",
+    "givenName": "Laura",
+    "familyName": "Wyss"
+  },
+  {
+    "username": "donald@wyss.ch",
+    "password": "donald",
+    "phone": "076 111 22 33",
+    "givenName": "Donald",
+    "familyName": "Wyss"
+  },
+  {
+    "username": "testtest@wyss.ch",
+    "password": "toto",
+    "phone": "076 111 22 33",
+    "givenName": "Donald",
+    "familyName": "Wyss"
   }
 ]
