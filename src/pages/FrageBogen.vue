@@ -27,18 +27,8 @@ import QuestionComponent from '../components/Question.vue';
 import NEUSPENDER from '../assets/questionnaires/neuspender.json';
 import { Questionnaire, Bundle, BundleType, Patient } from '@i4mi/fhir_r4';
 import { QuestionnaireData } from '@i4mi/fhir_questionnaire';
-import { iti65DocumentBundle, useITI65 } from '@i4mi/mhealth-proto-components/src/utils/epdPlaygroundUtils';
-import {
-  CLASS_CODES,
-  CLASS_TYPE_COMBINATIONS,
-  createIti65Bundle,
-  FACILITY_CLASS_CODES,
-  iti65Metadata,
-  PRACTICE_SETTING_CODES,
-  SUPPORTED_LANGUAGE_DISPLAYS,
-  SystemCodeExtension,
-  TYPE_CODES
-} from '@i4mi/mhealth-proto-components/src/utils/fhirUtils';
+import { Iti65DocumentBundle, useITI65 } from '@i4mi/mhealth-proto-components/lib/utils/epdPlaygroundUtils';
+import { createIti65Bundle, Iti65Metadata, SystemCodeExtension } from '@i4mi/mhealth-proto-components/lib/utils/fhirUtils';
 
 
 export default defineComponent({
@@ -83,7 +73,7 @@ export default defineComponent({
       };
 
       const metadata = {
-        title: this.qData,
+        title: 'QuestionnaireResponse',
         isFhir: true,
         description: 'Set of all responses, which have to be answered before donating blood',
         contentLanguage: 'de',
@@ -102,8 +92,8 @@ export default defineComponent({
         }
         //authorRole: ITI_65_AUTHOR_ROLE.PAT
 
-      } as iti65Metadata;
-      this.$fhirUtils.createIti65Bundle(this.$store.getUser, new File([JSON.stringify(this.response)], this.qData + '.json',
+      } as Iti65Metadata;
+      this.$fhirUtils.createIti65Bundle(this.patient, new File([JSON.stringify(this.response)], this.qData + '.json',
         {
           type: 'application/fhir+json'
         }), metadata).then((result) => this.$epdUtils.useITI65(result))
